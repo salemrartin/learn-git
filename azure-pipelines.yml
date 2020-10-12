@@ -1,0 +1,32 @@
+# Starter pipeline
+- task: PythonScript@0
+  inputs:
+    scriptSource: 'inline'
+    script: |
+      import subprocess
+      
+      print("Salem")
+      cmd = 'az vm image list'
+      completed_process = subprocess.run(cmd, shell=True, capture_output=True)
+      if completed_process.stderr:
+                      print("Something went wrong while executing the az command!\nStd Error: {0}\n".format(str(completed_process.stderr)))
+                      print("="*100,"\n")
+      print("Done")
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
