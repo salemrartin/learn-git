@@ -1,5 +1,5 @@
 pool:
-  name: Azure Pipelines
+  name: ubuntu-18.04
 steps:
 - task: PythonScript@0
   displayName: 'Run a Python script'
